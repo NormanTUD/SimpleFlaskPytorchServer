@@ -39,3 +39,16 @@ and the output will be like this:
 5   chair
 6    book
 ```
+
+# Dependencies
+
+```command
+sudo apt-get install ffmpeg libsm6 libxext6
+pip3 install flask
+pip3 install pandas
+pip3 install torchvision
+pip3 install matplotlib
+pip3 install seaborn
+pip3 install torch
+pip3 install opencv-python
+```
