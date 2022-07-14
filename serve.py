@@ -16,4 +16,4 @@ def index():
     results = model(img)
     return pprint.pformat(results.pandas().xyxy[0])
 
-app.run()
+app.run(host='0.0.0.0', port=5000)
