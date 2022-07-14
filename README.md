@@ -39,3 +39,12 @@ and the output will be like this:
 5   chair
 6    book
 ```
+
+# Dependencies
+
+```command
+pip3 install flask
+pip3 install torch
+pip3 install opencv-python
+sudo apt-get install ffmpeg libsm6 libxext6
+```

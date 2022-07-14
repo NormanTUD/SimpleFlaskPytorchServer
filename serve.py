@@ -11,8 +11,7 @@ model = torch.hub.load('ultralytics/yolov5', 'yolov5x')  # or yolov5n - yolov5x6
 
 @app.route('/',  methods = ['POST'])
 def index():
-    img_path = request.files["image"]
-    img = Image.open(img_path)
+    img = Image.open(request.files['image'].stream)
     results = model(img)
     return pprint.pformat(results.pandas().xyxy[0])
 
