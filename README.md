@@ -43,8 +43,12 @@ and the output will be like this:
 # Dependencies
 
 ```command
+sudo apt-get install ffmpeg libsm6 libxext6
 pip3 install flask
+pip3 install pandas
+pip3 install torchvision
+pip3 install matplotlib
+pip3 install seaborn
 pip3 install torch
 pip3 install opencv-python
-sudo apt-get install ffmpeg libsm6 libxext6
 ```
