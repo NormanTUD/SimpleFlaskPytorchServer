@@ -54,6 +54,7 @@ def reveice_ufo_image_annotarious():
 
     try:
         msg = base64.b64decode(d['image'])
+        src = d["src"]
         buf = io.BytesIO(msg)
         img = Image.open(buf)
         #img = Image.open(cStringIO.StringIO(d['image']))
@@ -94,7 +95,7 @@ def reveice_ufo_image_annotarious():
                           }
                         ],
                         "target": {
-                          "source": "ai",
+                          "source": "%s",
                           "selector": {
                             "type": "FragmentSelector",
                             "conformsTo": "http://www.w3.org/TR/media-frags/",
@@ -104,7 +105,7 @@ def reveice_ufo_image_annotarious():
                         "@context": "http://www.w3.org/ns/anno.jsonld",
                         "id": "#%s"
                       }
-                    """ % (name, round(xcenter), round(ycenter), round(width), round(height), item_uuid)
+                    """ % (name, src, round(xcenter), round(ycenter), round(width), round(height), item_uuid)
                     part_strings.append(ps)
                 else:
                     print("Line does not match regex:")
