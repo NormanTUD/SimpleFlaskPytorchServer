@@ -64,6 +64,7 @@ def reveice_ufo_image_annotarious():
         #return pprint.pformat(results.pandas().xywh[0])
 
         r = results.pandas().xywh[0]
+        dir(results.pandas())
 
         part_strings = []
 
@@ -82,6 +83,10 @@ def reveice_ufo_image_annotarious():
                     confidence = float(m.group(6))
                     classnr = float(m.group(7))
                     name = m.group(8)
+
+                    xstart = xcenter - (width / 2)
+                    ystart = ycenter - (height / 2)
+
 
                     item_uuid = str(uuid.uuid4())
 
@@ -105,7 +110,7 @@ def reveice_ufo_image_annotarious():
                         "@context": "http://www.w3.org/ns/anno.jsonld",
                         "id": "#%s"
                       }
-                    """ % (name, src, round(xcenter), round(ycenter), round(width), round(height), item_uuid)
+                    """ % (name, src, round(xstart), round(ystart), round(width), round(height), item_uuid)
                     part_strings.append(ps)
                 else:
                     print("Line does not match regex:")
