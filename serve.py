@@ -50,7 +50,6 @@ def reveice_ufo_image_annotarious():
     debug("Loading image file")
 
     d = json.loads(request.get_data(cache=False, as_text=True, parse_form_data=False))
-    dier(d)
 
     try:
         msg = base64.b64decode(d['image'])
@@ -113,7 +112,11 @@ def reveice_ufo_image_annotarious():
             i = i + 1
 
 
-        return "[" + ", ".join(part_strings) + "]"
+        res_json = "[" + ", ".join(part_strings) + "]"
+
+        #print(res_json)
+
+        return res_json
     except Exception as e:
         debug(e)
         return str(e)
