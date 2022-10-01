@@ -8,7 +8,7 @@ import json
 from flask import Flask, request
 from PIL import Image
 import torch
-
+from flask_cors import CORS, cross_origin
 import re
 
 class REMatcher(object):
@@ -29,6 +29,7 @@ def debug (msg):
     print('Debug: ' + pprint.pformat(msg), file=sys.stderr)
 
 app = Flask("Image analyzer")
+CORS(app)
 
 #model = torch.hub.load('ultralytics/yolov5', 'yolov5x')  # or yolov5n - yolov5x6, custom
 # git clone --depth 1 https://github.com/ultralytics/yolov5.git
