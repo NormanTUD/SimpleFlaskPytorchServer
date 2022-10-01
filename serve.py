@@ -1,4 +1,7 @@
 import sys
+import io
+import json
+import base64
 import uuid
 import pprint
 import json
@@ -46,8 +49,14 @@ def index():
 def reveice_ufo_image_annotarious():
     debug("Loading image file")
 
+    d = json.loads(request.get_data(cache=False, as_text=True, parse_form_data=False))
+    dier(d)
+
     try:
-        img = Image.open(request.files['image'].stream)
+        msg = base64.b64decode(d['image'])
+        buf = io.BytesIO(msg)
+        img = Image.open(buf)
+        #img = Image.open(cStringIO.StringIO(d['image']))
         debug("Running model")
         results = model(img)
         debug("Getting outputs")
@@ -114,6 +123,7 @@ def reveice_ufo_image():
     debug("Loading image file")
 
     try:
+
         img = Image.open(request.files['image'].stream)
         debug("Running model")
         results = model(img)
