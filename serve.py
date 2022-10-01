@@ -10,7 +10,9 @@ def debug (msg):
 
 app = Flask("Image analyzer")
 
-model = torch.hub.load('ultralytics/yolov5', 'yolov5x')  # or yolov5n - yolov5x6, custom
+#model = torch.hub.load('ultralytics/yolov5', 'yolov5x')  # or yolov5n - yolov5x6, custom
+# git clone --depth 1 https://github.com/ultralytics/yolov5.git
+model = torch.hub.load("yolov5", 'custom', path="/home/norman/test/randomtest_7954/yolov5/runs/train/exp5/weights/best.pt", source='local')
 
 @app.route('/',  methods = ['GET'])
 def index():
